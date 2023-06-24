@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MovieList</string>
+    <string name="poster_film">Poster Film</string>
+    <string name="favorite">favorite</string>
+    <string name="belum_punya_film_favorite_nih">Belum Punya Film Favorite Nih !</string>
+    <string name="all_movies">All Movies</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="thumbnail_image">thumbnail image</string>
+    <string name="rating">Rating :</string>
+    <string name="genre">Genre :</string>
+    <string name="not_found">Belum Ada Film Bagus Nih !</string>
+    <string name="favorite_movies">Favorite Movies</string>
+    <string name="search_hint">Search</string>
+    <string name="search_not_found">Pencarian Tidak Ketemu</string>
+</resources>
