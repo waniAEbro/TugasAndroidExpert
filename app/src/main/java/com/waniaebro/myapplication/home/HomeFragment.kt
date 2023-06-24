@@ -6,7 +6,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -74,7 +73,6 @@ class HomeFragment : Fragment() {
                         it.notFoundTv.visibility = View.GONE
                         adapter.submitList(result.data)
                     }
-                    Log.e("search", result.data.toString())
                 }
             }
 

@@ -17,11 +17,16 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+        buildConfigField("String", "KEY", '"eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNzYyNzM1ZDVjMjM3YmYyNThiYzZkNjQ4MTBhOTllMyIsInN1YiI6IjY0NzQxZGNmZGQ3MzFiMmQ3Y2Q3NWRjYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0pEmHbXN6BU72sQs3UiizfJXjfftifPaQWLD2w-t5vE"')
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

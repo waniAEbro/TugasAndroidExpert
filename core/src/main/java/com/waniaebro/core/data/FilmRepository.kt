@@ -1,6 +1,6 @@
 package com.waniaebro.core.data
 
-import android.util.Log
+import com.waniaebro.core.BuildConfig
 import com.waniaebro.core.data.source.local.room.FilmDao
 import com.waniaebro.core.data.source.remote.retrofit.ApiService
 import com.waniaebro.core.data.source.remote.retrofit.ResultResponse
@@ -21,7 +21,7 @@ class FilmRepository(
         try {
             emit(ResultResponse.Loading)
             val response =
-                service.getAllFilm("Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNzYyNzM1ZDVjMjM3YmYyNThiYzZkNjQ4MTBhOTllMyIsInN1YiI6IjY0NzQxZGNmZGQ3MzFiMmQ3Y2Q3NWRjYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0pEmHbXN6BU72sQs3UiizfJXjfftifPaQWLD2w-t5vE")
+                service.getAllFilm("Bearer ${BuildConfig.KEY}")
             database.getAllFilm().collect {
                 emit(ResultResponse.Success(DataMapper.responseFilmsToDomain(response.results, it)))
             }
@@ -35,7 +35,7 @@ class FilmRepository(
             emit(ResultResponse.Loading)
             val response = service.getFilm(
                 id,
-                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNzYyNzM1ZDVjMjM3YmYyNThiYzZkNjQ4MTBhOTllMyIsInN1YiI6IjY0NzQxZGNmZGQ3MzFiMmQ3Y2Q3NWRjYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0pEmHbXN6BU72sQs3UiizfJXjfftifPaQWLD2w-t5vE"
+                "Bearer ${BuildConfig.KEY}"
             )
             database.getAllFilm().collect {
                 emit(ResultResponse.Success(DataMapper.responseFilmToDomain(response, it)))
@@ -53,7 +53,7 @@ class FilmRepository(
         try {
             emit(ResultResponse.Loading)
             val response =
-                service.getAllFilm("Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNzYyNzM1ZDVjMjM3YmYyNThiYzZkNjQ4MTBhOTllMyIsInN1YiI6IjY0NzQxZGNmZGQ3MzFiMmQ3Y2Q3NWRjYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0pEmHbXN6BU72sQs3UiizfJXjfftifPaQWLD2w-t5vE")
+                service.getAllFilm("Bearer ${BuildConfig.KEY}")
             database.getAllFilm().collect {
                 val films = DataMapper.responseFilmsToDomain(response.results.filter { item ->
                     item.title.lowercase().contains(title.lowercase())
@@ -70,13 +70,11 @@ class FilmRepository(
 
     override suspend fun setFavorite(film: Film) {
         val films = DataMapper.domainToEntity(film)
-        Log.e("insertData", "aku dipanggil")
         database.insertFilm(films)
     }
 
     override suspend fun deleteFavorite(film: Film) {
         val films = DataMapper.domainToEntity(film)
-        Log.e("deleteData", "aku dipanggil")
         database.deleteFilm(films)
     }
 }
